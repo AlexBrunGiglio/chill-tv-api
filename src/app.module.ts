@@ -1,9 +1,11 @@
+import { HttpModule, HttpService } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Environment } from './environment/environment';
+import { MooviesModule } from './moovies/moovies.module';
 
 @Module({
   imports: [
@@ -20,6 +22,7 @@ import { Environment } from './environment/environment';
       extra: { timezone: 'utc' },
     }),
     ConfigModule.forRoot({ envFilePath: './environment/.env', isGlobal: true }),
+    MooviesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

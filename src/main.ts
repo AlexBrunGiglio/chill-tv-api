@@ -4,6 +4,7 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors({});
   const config = new DocumentBuilder()
     .setTitle('ChillTV API')
     .setDescription('The chill TV API description')
